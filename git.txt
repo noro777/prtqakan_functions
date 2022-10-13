@@ -1,0 +1,83 @@
+
+// mkniki  scrolov  fonty  poxuma 
+
+function mousewheell(e,this1) {
+            let jq_this = $(this1);
+
+
+            if(e.target){
+                $('body').css('overflow','hidden');
+
+                if(e.wheelDelta /120 > 0) {
+
+                    if(jq_this.find('img').length){
+                            let size = jq_this.width();
+
+                            size++;
+
+                            jq_this.css("width", size + "px");
+                    }else {
+
+                        let font = parseInt(window.getComputedStyle(this1).getPropertyValue('font-size'));
+
+                        font++;
+
+                        jq_this.css("fontSize", font + "px");
+                    }
+                }
+                else{
+
+                    if(jq_this.find('img').length){
+                        let size = jq_this.width();
+
+                        size--;
+
+                        jq_this.css("width", size + "px");
+                    }else {
+                        let font = parseInt(window.getComputedStyle(this1).getPropertyValue('font-size'));
+
+                        font--;
+
+                        jq_this.css("fontSize", font + "px");
+                    }
+                }
+            }
+
+        }
+
+
+//// mknikov  sharjuma  es  koxm  en  koxm
+
+function big_big(event,this1){
+
+            if(isDown){
+                bigDiv1 = $(this1).closest('.big_big_div')
+                bigDiv = this1.closest('.big_big_div')
+                dragme = this1.closest('.span_x_div')
+                dragme1 = $(this1).closest('.span_x_div')
+
+
+                if(bigDiv1.is(event.target) || bigDiv1.has(event.target).length !== 0){
+                    if(
+                        bigDiv.getBoundingClientRect().top <= event.clientY - dragme.offsetHeight/2
+                        && bigDiv.getBoundingClientRect().right >= event.clientX + dragme.offsetWidth - dragme.offsetWidth/2
+                        && bigDiv.getBoundingClientRect().left <= event.clientX - dragme.offsetWidth/2
+                        && bigDiv.getBoundingClientRect().bottom >= event.clientY + dragme.offsetHeight - dragme.offsetHeight/2
+                    ){
+                        if(dragme1.find('img').length) {
+                            if(img){
+                                dragme.style.left = event.clientX - bigDiv.getBoundingClientRect().left - dragme.offsetWidth / 2 + 'px';
+                                dragme.style.top = event.clientY - bigDiv.getBoundingClientRect().top - dragme.offsetHeight / 2 + 'px';
+                            }
+                        }else {
+                            img = false;
+                            dragme.style.left = event.clientX - bigDiv.getBoundingClientRect().left - dragme.offsetWidth / 2 + 'px';
+                            dragme.style.top = event.clientY - bigDiv.getBoundingClientRect().top - dragme.offsetHeight / 2 + 'px';
+                        }
+
+                    }
+                }
+            }
+
+
+        }
